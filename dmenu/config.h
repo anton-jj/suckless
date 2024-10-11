@@ -7,22 +7,21 @@ static int min_width = 1000; /* minimum width when centered */
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static char *fonts[] = {"HackNerdFont-Regular:size=20"};
 static const char *prompt = NULL; /* -p  option; prompt to the left of */
-
-static const char col_fg[]       = "#edeff0";  // Light foreground text
-static const char col_bg[]       = "#0c0e0f";  // Dark background
-static const char col_border[]   = "#6791c9";  // Soft blue border
-static const char col_highlight[] = "#df5b61"; // Muted red highlight
-static const char col_sel_bg[]   = "#e8646a";  // Red for selected background
-static const unsigned int alpha = 200;         // Amount of opacity (0xff is opaque)
+static const char col_fg[]       = "#000000";       // Svart text
+static const char col_bg[]       = "#181f21";       // Mörk bakgrund
+static const char col_border[]    = "#ffffff";      // Vit kant
+static const char col_highlight[] = "#e06e6e";      // Röd markering
+static const char col_sel_bg[]    = "#dadada";
+static const unsigned int alpha = 200;         // Opacitet (0xff är ogenomskinlig)
 
 static const char *colors[SchemeLast][2] = {
     /*     fg         bg       */
-    [SchemeNorm]          = { col_fg, col_bg },              
-    [SchemeSel]           = { col_fg, col_bg },        
-    [SchemeSelHighlight]  = { col_fg, col_highlight },            
-    [SchemeNormHighlight] = { col_highlight, col_bg },     
-    [SchemeOut]           = { col_fg, col_bg },            
-    [SchemeOutHighlight]  = { col_highlight, col_bg },     
+    [SchemeNorm]          = { col_fg, col_bg },              // Normalt schema
+    [SchemeSel]           = { col_fg, col_border },         // Vald schema
+    [SchemeSelHighlight]  = { col_fg, col_highlight },      // Vald markering schema
+    [SchemeNormHighlight] = { col_highlight, col_bg },      // Normal markering schema
+    [SchemeOut]           = { col_fg, col_bg },             // Utskrift schema
+    [SchemeOutHighlight]  = { col_highlight, col_bg },      // Utskrift markering schema
 };
 
 static const unsigned int alphas[SchemeLast][2] = {

@@ -19,11 +19,9 @@
 // Define blocks for the status feed as X(icon, cmd, interval, signal).
 #define BLOCKS(X)               \
     X("", "~/.local/bin/statusbar/pkg_modul", 3600, 2)     \
-    X("", "~/.local/bin/statusbar/volume_modul", 30, 7)     \
     X("", "~/.local/bin/statusbar/cpu_modul", 20, 1)       \
     X("", "~/.local/bin/statusbar/mem_modul", 20, 3)     \
-    X("", "~/.local/bin/statusbar/clock_modul", 60, 5)         
+    X("", "~/.local/bin/statusbar/clock_modul", 60, 5)      \
+    X("", "~/.local/bin/statusbar/volume_modul", 41, 7)         
 
-//    X("", "~/.local/bin/statusbar/cpu_temp_modul", 20, 4)  
-//X("", "battery_modul", 30, 10)      
 #endif  // CONFIG_H

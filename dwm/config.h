@@ -7,60 +7,63 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 0;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
-static const unsigned int systrayiconsize = 16; /* systray icon size in px */
+static const unsigned int systrayiconsize = 20; /* systray icon size in px */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 20;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 0;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 0;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 0;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 0;       /* vert outer gap between windows and screen edge */
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-#define ICONSIZE 16   /* icon size */
+#define ICONSIZE 20   /* icon size */
 #define ICONSPACING 5 /* space between icon and title */
 static const int horizpadbar        = 6;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 14;        /* vertical padding for statusbar */
-static const int vertpad            = 8;       /* vertical padding of bar */
-static const int sidepad            = 4;       /* horizontal padding of bar */
+static const int vertpad            = 0;       /* vertical padding of bar */
+static const int sidepad            = 0;       /* horizontal padding of bar */
 static const char *fonts[]          = { "HackNerdFont-Regular:size=14" };
 static const char dmenufont[]       = "HackNerdFont-Regular:size=14";
-static const char col_bg1[]      = "#0c0e0f";  
-static const char col_fg[]       = "#edeff0";  
-static const char col_fg1[]      = "#e4e6e7";
-static const char col_bg2[]      = "#232526";  
-static const char col_accent1[]  = "#709ad2";  
-static const char col_accent2[]  = "#70b8ca";  
+static char normalBgColor[]        = "#181f21";       // Bakgrund för normala tillstånd
+static char normalBorderColor[]     = "#dadada";       // Border för normala tillstånd (oval)
+static char normalFgColor[]         = "#dadada";       // Textfärg för normala tillstånd
+static char selectedFgColor[]       = "#bdc3c2";       // Textfärg för markerade tillstånd
+static char selectedBorderColor[]   = "#ffffff";       // Border för markerade tillstånd (vit)
+static char selectedBgColor[]       = "#575e60";       // Bakgrund för markerade tillstånd
 
-static const char *colors[][3]      = {
+static const char *colors[][3] = {
     /*               fg         bg         border   */
-    [SchemeNorm] = { col_fg, col_bg1, col_accent2 },
-    [SchemeSel]  = { col_accent2, col_bg2,  col_accent1  },
-    [SchemeTitle]  = { col_fg1, col_bg2, col_accent2 },
+    [SchemeNorm] = { normalFgColor, normalBgColor, normalBorderColor },  // Normala tillstånd
+    [SchemeSel]  = { selectedFgColor, selectedBgColor, selectedBorderColor }, // Markerade tillstånd
+    [SchemeTitle] = { normalBgColor, normalBorderColor, selectedBorderColor }, // Titel
 };
 
 static const char *tagsel[][2] = {
     /* fg         bg */
-    { "#bc83e3","#232526" }, 
-    { "#df5b61","#232526"},  
-    { "#78b892","#232526"},  
-    { "#de8f78","#232526"},  
-    { "#6791c9","#232526"},  
-    { "#bc83e3","#232526"},  
-    { "#67afc1","#232526"},  
-    { "#e4e6e7","#232526"},  
-    { "#e79881","#232526"},  
+    { normalBgColor, normalFgColor },  // Första taggen
+    { normalBgColor, normalFgColor },  // Andra taggen
+    { normalBgColor, normalFgColor },  // Tredje taggen
+    { normalBgColor, normalFgColor },  // Fjärde taggen
+    { normalBgColor, normalFgColor },  // Femte taggen
+    { normalBgColor, normalFgColor },  // Sjätte taggen
+    { normalBgColor, normalFgColor },  // Sjunde taggen
+    { normalBgColor, normalFgColor },  // Åttonde taggen
+    { normalBgColor, normalFgColor },  // Nionde taggen
 };
 
+
 /* tagging */
-static const char *tags[]         = { "一", "二", "三", "四", "五", "六", "七", "八","九" };
+//static const char *tags[]         = { "一", "二", "三", "四", "五", "六", "七", "八","九" };
+//static const char *tags[]         = { "  ", "  ", "  ","  ","  "};
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const int momentaryalttags = 0; /* 1 means alttags will show only when key is held down*/
 
-static const unsigned int ulinepad	= 5;	/* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke	= 4;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 2;	/* how far above the bottom of the bar the line should appear */
+static const unsigned int ulinepad	= 0;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke	= 0;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
 static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
 
 
