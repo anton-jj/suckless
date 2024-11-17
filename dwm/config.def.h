@@ -9,17 +9,17 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char border_normal[]   =    "#444444";
-static const char border_active[]   =    "#ffffff";
-static const char bg_normal[]       =    "#222222";
-static const char bg_active[]       =    "#555555";
-static const char fg[]              =    "#dadada";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { fg, bg_normal, border_normal },
-	[SchemeSel]  = { bg_normal, fg,  border_active  },
-};
+static const char border_normal[]   =    "#404040";    
+static const char border_active[]   =    "#949494";     
+static const char bg_normal[]       =    "#2b2b2b";    
+static const char bg_active[]       =    "#4a4a4a";    
+static const char fg[]              =    "#dedede";    
 
+static const char *colors[][3]      = {
+        /*               fg         bg         border   */
+        [SchemeNorm] = { fg, bg_normal, border_normal },
+        [SchemeSel]  = { bg_normal, fg,  border_active  },
+};
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -31,7 +31,7 @@ static const Rule rules[] = {
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
 	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
+	{ "st",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
 

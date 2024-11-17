@@ -112,36 +112,38 @@ float alpha = 0.85;
 /*
  * Färger
  */
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  "#050707", /* background */
-  "#D1BAAA", /* red */
-  "#82a76d", /* green */
-  "#ffe7a1", /* yellow */
-  "#528C90", /* blue */
-  "#2B7B82", /* cyan */
-  "#9C9A9E", /* magenta */
-  "#EFDECB", /* foreground (light beige) */
+    /* 8 normal colors */
+     "#2b2b2b", /* black   */
+     "#665555", /* red     */
+     "#666655", /* green   */
+     "#657b7b", /* yellow  */
+     "#565666", /* blue    */
+     "#605565", /* magenta */
+     "#566665", /* cyan    */
+     "#949494", /* white   */
 
-  "#050707", /* background */
-  "#D1BAAA", /* red */
-  "#82a76d", /* green */
-  "#ffe7a1", /* yellow */
-  "#528C90", /* blue */
-  "#2B7B82", /* cyan */
-  "#9C9A9E", /* magenta */
-  "#EFDECB", /* foreground (light beige) */
-  [255] = 0,
-  "#ADD8E6", /* cursor */
-  "#555555", /* reverse cursor */
-  "#050707", /* bg */
-  "#EFDECB", /* fg */
+    /* 8 bright colors */
+      "#404040", /* black   */
+      "#796666", /* red     */
+      "#797966", /* green   */
+      "#7b8e8e", /* yellow  */
+      "#696679", /* blue    */
+      "#746679", /* magenta */
+      "#697977", /* cyan    */
+      "#dedede", /* white   */
+
+    /* special colors */
+    [256] = "#2b2b2b", /* background */
+    [257] = "#dedede", /* foreground */
 };
 
-unsigned int defaultfg = 7;  // Ljus beige (index 7)
-unsigned int defaultbg = 0;  // Mörk bakgrund (index 0)
-unsigned int defaultcs = 256; // Ljus färg för cursor (index 256)
-static unsigned int defaultrcs = 257; // Grå (index 257)
-
+/* Default colors (colorname index) */
+ unsigned int defaultfg = 257;
+ unsigned int defaultbg = 256;
+ unsigned int defaultcs = 257; /* cursor */
+static unsigned int defaultrcs = 256; /* reverse cursor */
 /* Default colors */
 /*
  * Default shape of cursor
