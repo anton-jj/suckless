@@ -1,5 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
+# include <X11/XF86keysym.h>
 #include "movestack.c"
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -104,6 +105,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,             		XK_Escape,      quit,           {0} },
+	// volume 
+    { 0, XF86XK_AudioRaiseVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% > /dev/null")  },
+    { 0, XF86XK_AudioLowerVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% > /dev/null")  },
+    { 0, XF86XK_AudioMute, spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null") },
+    { 0, XF86XK_AudioMicMute, spawn,  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle > /dev/null")  },
 };
 
 /* button definitions */
