@@ -105,6 +105,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,             		XK_Escape,      quit,           {0} },
+	{ ControlMask|ShiftMask,		XK_m,		spawn,	   SHCMD("~/.local/bin/monitors.sh")  },
 	// volume 
     { 0, XF86XK_AudioRaiseVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% > /dev/null")  },
     { 0, XF86XK_AudioLowerVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% > /dev/null")  },
