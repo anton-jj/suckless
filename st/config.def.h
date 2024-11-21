@@ -113,38 +113,37 @@ float alpha = 0.9;
  * Färger
  */
 /* Terminal colors (16 first used in escape sequence) */
+/* Default colors */
+/* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* 8 normal colors */
-     "#2b2b2b", /* black   */
-     "#665555", /* red     */
-     "#666655", /* green   */
-     "#657b7b", /* yellow  */
-     "#565666", /* blue    */
-     "#605565", /* magenta */
-     "#566665", /* cyan    */
-     "#949494", /* white   */
+    [0] = "#0A0A0A", /* black   */
+    [1] = "#FF5555", /* red     */
+    [2] = "#55FF55", /* green   */
+    [3] = "#FFFF55", /* yellow  */
+    [4] = "#5555FF", /* blue    */
+    [5] = "#FF55FF", /* magenta */
+    [6] = "#55FFFF", /* cyan    */
+    [7] = "#F0F0F0", /* white   */
 
     /* 8 bright colors */
-      "#404040", /* black   */
-      "#796666", /* red     */
-      "#797966", /* green   */
-      "#7b8e8e", /* yellow  */
-      "#696679", /* blue    */
-      "#746679", /* magenta */
-      "#697977", /* cyan    */
-      "#dedede", /* white   */
+    [8]  = "#303030", /* black   */
+    [9]  = "#FF8888", /* red     */
+    [10] = "#88FF88", /* green   */
+    [11] = "#FFFF88", /* yellow  */
+    [12] = "#8888FF", /* blue    */
+    [13] = "#FF88FF", /* magenta */
+    [14] = "#88FFFF", /* cyan    */
+    [15] = "#FFFFFF", /* white   */
 
-    /* special colors */
-    [256] = "#2b2b2b", /* background */
-    [257] = "#dedede", /* foreground */
+    [256] = "#0A0A0A", /* background */
+    [257] = "#F0F0F0", /* foreground */
 };
-
 /* Default colors (colorname index) */
  unsigned int defaultfg = 257;
  unsigned int defaultbg = 256;
  unsigned int defaultcs = 257; /* cursor */
 static unsigned int defaultrcs = 256; /* reverse cursor */
-/* Default colors */
 /*
  * Default shape of cursor
  * 2: Block ("█")

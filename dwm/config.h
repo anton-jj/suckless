@@ -10,16 +10,15 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
-static const char border_normal[]   =    "#404040";    
-static const char border_active[]   =    "#949494";     
-static const char bg_normal[]       =    "#2b2b2b";    
-static const char bg_active[]       =    "#4a4a4a";    
-static const char fg[]              =    "#dedede";    
-
+static const char border_normal[]   = "#101010";
+static const char border_active[]   = "#707070";
+static const char bg_normal[]       = "#0A0A0A";
+static const char bg_active[]       = "#303030";
+static const char fg[]              = "#F0F0F0";
 static const char *colors[][3]      = {
         /*               fg         bg         border   */
         [SchemeNorm] = { fg, bg_normal, border_normal },
-        [SchemeSel]  = { bg_normal, fg,  border_active  },
+        [SchemeSel]  = { fg, bg_active, border_active },
 };
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
