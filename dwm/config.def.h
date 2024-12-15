@@ -5,6 +5,11 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int gappih    = 5;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 5;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 5;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 5;       /* vert outer gap between windows and screen edge */
+static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 1;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 5;   /* systray spacing */
@@ -13,21 +18,29 @@ static const int showsystray        = 1;        /* 0 means no systray */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=13" };
-static const char dmenufont[]       = "monospace:size=13";
-static const char border_normal[]   = "#d79921";
-static const char border_active[]   = "#b16286";
-static const char bg_normal[]       = "#282828";
-static const char bg_active[]       = "#458588";
-static const char fg[]              = "#ebdbb2";
+static const char *fonts[]          = { "Hack:size=15" };
+static const char dmenufont[]       = "Hack:size=15";
+/*light */ /*
+static const char fg[]         = "#3c3836";
+static const char bg[]         = "#f2e5bc";
+static const char acc[]        = "#d79921";
+*/
+static const char fg[]         = "#ebdbb2";
+static const char bg[]         = "#32302f";
+static const char acc[]        = "#d79921";
 static const char *colors[][3]      = {
-        /*               fg         bg         border   */
-        [SchemeNorm] = { fg, bg_normal, border_normal },
-        [SchemeSel]  = { fg, bg_active, border_active },
+	/*                   fg  bg   border */
+	[SchemeNorm]     = { fg, bg,  bg  },
+	[SchemeSel]      = { bg, acc, acc },
+	[SchemeStatus]   = { fg, bg,  "#000000"  }, // Statusbar right
+	[SchemeTagsSel]  = { fg, acc, "#000000"  }, // Tagbar left selected
+	[SchemeTagsNorm] = { fg, bg,  "#000000"  }, // Tagbar left unselected
+	[SchemeInfoSel]  = { fg, bg,  "#000000"  }, // infobar middle  selected
+	[SchemeInfoNorm] = { fg, bg,  "#000000"  }, // infobar middle  unselected
 };
 /* tagging */
-static const char *tags[] = { "|", "|","|","|","|","|","|","|","|", };
 static const char *alttags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "|", "|","|","|","|","|","|","|","|",};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -73,6 +86,14 @@ static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+	/*lock screen*/
+	{ MODKEY, 			XK_BackSpace,	spawn,		SHCMD("slock")},
+	/*GAPS*/
+	{ MODKEY,              		XK_plus,      incrgaps,       {.i = +3 } },
+	{ MODKEY,              		XK_minus,      incrgaps,       {.i = -3 } },
+	{ MODKEY,              		XK_g,      togglegaps,     {0} },
+	{ MODKEY|ShiftMask,    		XK_g,      defaultgaps,    {0} },
+
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -110,14 +131,14 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,             		XK_Escape,      quit,           {0} },
-	{ ControlMask|ShiftMask,		XK_m,		spawn,	   SHCMD("~/.local/bin/monitors.sh")  },
+	{ ControlMask|ShiftMask,		XK_m,		spawn,	   SHCMD("~/.local/bin/monitor.sh")  },
 	// volume 
     { 0, XF86XK_AudioRaiseVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% > /dev/null")  },
     { 0, XF86XK_AudioLowerVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% > /dev/null")  },
     { 0, XF86XK_AudioMute, spawn, SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle > /dev/null") },
     { 0, XF86XK_AudioMicMute, spawn,  SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle > /dev/null")  },
-    { 0, XF86XK_MonBrightnessUp,                   spawn,                  {.v = (const char*[]){ "xbacklight", "-inc", "15", NULL } } },
-    { 0, XF86XK_MonBrightnessDown,                 spawn,                  {.v = (const char*[]){ "xbacklight", "-dec", "15", NULL } } },
+    { 0, XF86XK_MonBrightnessUp,                   spawn,                  {.v = (const char*[]){ "brightnessctl", "set", "+10%", NULL } } },
+    { 0, XF86XK_MonBrightnessDown,                 spawn,                  {.v = (const char*[]){ "brightnessctl", "set", "10%-", NULL } } },
 };
 
 /* button definitions */

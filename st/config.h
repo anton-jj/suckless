@@ -106,7 +106,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.9;
+float alpha = 1;
 
 /* Terminal colors (16 first used in escape sequence) */
 /*
@@ -118,32 +118,33 @@ float alpha = 0.9;
 static const char *colorname[] = {
     /* 8 normal colors */
 	//gruvbox
-  [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+  //[0] = "#f2e5bc", /* white */
+  [0] = "#32302f",
   [1] = "#cc241d", /* red     */
   [2] = "#98971a", /* green   */
   [3] = "#d79921", /* yellow  */
   [4] = "#458588", /* blue    */
   [5] = "#b16286", /* magenta */
   [6] = "#689d6a", /* cyan    */
-  [7] = "#a89984", /* white   */
+  [7] = "#ebdbb2", /* white   */
 
   /* 8 bright colors */
-  [8]  = "#928374", /* black   */
+  //[8]  = "#ebdbb2", /* white   */
+  [8]  = "#282828",
   [9]  = "#fb4934", /* red     */
   [10] = "#b8bb26", /* green   */
   [11] = "#fabd2f", /* yellow  */
   [12] = "#83a598", /* blue    */
   [13] = "#d3869b", /* magenta */
   [14] = "#8ec07c", /* cyan    */
-  [15] = "#ebdbb2", /* white   */
-    [256] = "#282828", /* background */
-    [257] = "#ebdbb2", /* foreground */
+  //[15] = "#282828", /* white   */
+  [15] = "#fbf1c7",
 };
 /* Default colors (colorname index) */
- unsigned int defaultfg = 257;
- unsigned int defaultbg = 256;
- unsigned int defaultcs = 257; /* cursor */
-static unsigned int defaultrcs = 256; /* reverse cursor */
+ unsigned int defaultfg = 7;
+ unsigned int defaultbg = 0;
+ unsigned int defaultcs = 7; /* cursor */
+static unsigned int defaultrcs = 7; /* reverse cursor */
 /*
  * Default shape of cursor
  * 2: Block ("█")
