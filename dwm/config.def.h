@@ -20,28 +20,32 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Hack:size=15" };
 static const char dmenufont[]       = "Hack:size=15";
-/*light */ /*
-static const char fg[]         = "#3c3836";
-static const char bg[]         = "#f2e5bc";
-static const char acc[]        = "#d79921";
-*/
-static const char fg[]         = "#ebdbb2";
-static const char bg[]         = "#32302f";
-static const char acc[]        = "#d79921";
-static const char *colors[][3]      = {
-	/*                   fg  bg   border */
-	[SchemeNorm]     = { fg, bg,  bg  },
-	[SchemeSel]      = { bg, acc, acc },
-	[SchemeStatus]   = { fg, bg,  "#000000"  }, // Statusbar right
-	[SchemeTagsSel]  = { fg, acc, "#000000"  }, // Tagbar left selected
-	[SchemeTagsNorm] = { fg, bg,  "#000000"  }, // Tagbar left unselected
-	[SchemeInfoSel]  = { fg, bg,  "#000000"  }, // infobar middle  selected
-	[SchemeInfoNorm] = { fg, bg,  "#000000"  }, // infobar middle  unselected
-};
-/* tagging */
-static const char *alttags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tags[] = { "|", "|","|","|","|","|","|","|","|",};
+/* Moderna färger med mer livfulla toner */
+static const char fg[]         = "#dadada";  /* ljus text */
+static const char bg[]         = "#181a18";  /* mörkblå bakgrund */
+static const char acc[]        = "#7aa2f7";  /* blå accent */
 
+static const char *colors[][3]      = {
+    /*                   fg  bg   border */
+    [SchemeNorm]     = { fg, bg,  bg  },
+    [SchemeSel]      = { bg, acc, acc },
+    [SchemeStatus]   = { fg, bg,  "#000000"  },  // Statusbar right
+    [SchemeTagsSel]  = { bg, acc, "#000000"  },  // Tagbar left selected
+    [SchemeTagsNorm] = { fg, bg,  "#000000"  },  // Tagbar left unselected
+    [SchemeInfoSel]  = { fg, bg,  "#000000"  },  // infobar middle selected
+    [SchemeInfoNorm] = { fg, bg,  "#000000"  },  // infobar middle unselected
+};
+
+/* tagging med ikoner */
+static const char *alttags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "|", "|", "|", "|", "|" };
+/* 
+ =  (terminal)
+ = 󰈹 (webb/browser)
+ =  (kod/utveckling)
+ =  (chatt/kommunikation)
+ =  (media/underhållning)
+*/
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
