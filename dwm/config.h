@@ -2,6 +2,7 @@
 
 # include <X11/XF86keysym.h>
 #include "movestack.c"
+#include "unfloat.c"
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -89,11 +90,12 @@ static const Key keys[] = {
 	/*lock screen*/
 	{ MODKEY, 			XK_BackSpace,	spawn,		SHCMD("slock")},
 	/*GAPS*/
-	{ MODKEY,              		XK_plus,      incrgaps,       {.i = +3 } },
-	{ MODKEY,              		XK_minus,      incrgaps,       {.i = -3 } },
-	{ MODKEY,              		XK_g,      togglegaps,     {0} },
-	{ MODKEY|ShiftMask,    		XK_g,      defaultgaps,    {0} },
+	{ MODKEY,                   		XK_plus,      incrgaps,       {.i = +3 } },
+	{ MODKEY,                    		XK_minus,      incrgaps,       {.i = -3 } },
+	{ MODKEY,                    		XK_g,      togglegaps,     {0} },
+	{ MODKEY|ShiftMask,    	      	XK_g,      defaultgaps,    {0} },
 
+  {MODKEY|ShiftMask,              XK_z,     unfloatvisible, {0} },
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -107,14 +109,15 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,             		XK_q,      killclient,     {0} },
+	{ MODKEY,                   		XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY|ControlMask,		XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,		        XK_comma,  cyclelayout,    {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -130,8 +133,9 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,             		XK_Escape,      quit,           {0} },
-	{ ControlMask|ShiftMask,		XK_m,		spawn,	   SHCMD("~/.local/bin/monitor.sh")  },
+	{ MODKEY,             	      	XK_Escape,      quit,           {0} },
+
+	{ ControlMask|ShiftMask,		    XK_m,		spawn,	   SHCMD("~/.local/bin/monitor.sh")  },
 	// volume 
     { 0, XF86XK_AudioRaiseVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +5% > /dev/null")  },
     { 0, XF86XK_AudioLowerVolume, spawn,  SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -5% > /dev/null")  },
